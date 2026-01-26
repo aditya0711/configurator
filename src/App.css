@@ -1,0 +1,276 @@
+:root {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: #e7e9f1;
+  background-color: #0c0d14;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0c0d14;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  min-height: 100vh;
+  color: #e7e9f1;
+}
+
+.panel {
+  padding: 32px 28px;
+  background: linear-gradient(180deg, #11131f 0%, #0c0d14 100%);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.panel-header h1 {
+  font-size: 26px;
+  margin: 6px 0 10px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #7f86a6;
+  margin: 0;
+}
+
+.subtext {
+  font-size: 14px;
+  color: #a0a6c0;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c1c6db;
+}
+
+.tiles {
+  display: grid;
+  gap: 10px;
+}
+
+.tile {
+  background: #141725;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 14px 16px;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tile:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tile.active {
+  border-color: #6c7dff;
+  box-shadow: 0 0 0 1px rgba(108, 125, 255, 0.5);
+  background: #1b2033;
+}
+
+.tile-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.tile-desc {
+  font-size: 13px;
+  color: #99a0bf;
+}
+
+.range {
+  width: 100%;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6c7dff, #4ed3c2);
+  outline: none;
+}
+
+.range::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #f4f6ff;
+  border: 2px solid #6c7dff;
+  cursor: pointer;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #141725;
+  color: #c9cee3;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.pill.active {
+  border-color: #6c7dff;
+  background: #1b2033;
+  color: #ffffff;
+}
+
+.hint {
+  font-size: 12px;
+  color: #9aa1bf;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #ccd1e6;
+}
+
+.checkbox input {
+  accent-color: #6c7dff;
+}
+
+.summary {
+  margin-top: auto;
+  padding: 20px;
+  background: #131722;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summary-title {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #b6bbd3;
+}
+
+.summary-line strong {
+  color: #f0f2ff;
+}
+
+.summary ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: #9aa1bf;
+  font-size: 13px;
+  display: grid;
+  gap: 4px;
+}
+
+.summary-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+button.primary {
+  flex: 1;
+  background: #6c7dff;
+  border: none;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.ghost {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #d7dbf0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.fineprint {
+  font-size: 11px;
+  color: #7f86a6;
+}
+
+.preview {
+  position: relative;
+  background: radial-gradient(circle at top, #1b1f30 0%, #0b0c12 60%);
+}
+
+.preview canvas {
+  height: 100vh !important;
+  width: 100% !important;
+}
+
+.preview-label {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  background: rgba(15, 17, 26, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: #c9cee3;
+}
+
+.floating-badge {
+  background: rgba(20, 24, 38, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: #e5e9ff;
+  white-space: nowrap;
+}
+
+@media (max-width: 1000px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .preview canvas {
+    height: 70vh !important;
+  }
+}
