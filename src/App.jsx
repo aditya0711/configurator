@@ -1,12 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import {
-  Environment,
-  Edges,
-  Html,
-  OrbitControls,
-  RoundedBox,
-} from "@react-three/drei";
+import { Environment, Edges, Html, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
@@ -177,22 +171,14 @@ function BoxScene({ boxTypeId, productId, preset, showCutaway }) {
   const insertHeight = INSERT_HEIGHTS[boxTypeId];
   const baseHeight = -height / 2 + insertHeight + 0.1;
   const wallThickness = 0.14;
+  const wallHeight = height * 0.7;
+  const wallTop = -height / 2 + wallHeight;
 
   const sideClipPlane = useMemo(
     () => new THREE.Plane(new THREE.Vector3(-1, 0, 0), width * 0.15),
     [width]
   );
-  const topClipPlane = useMemo(
-    () =>
-      new THREE.Plane(
-        new THREE.Vector3(0, 1, 0),
-        -(height / 2 - wallThickness)
-      ),
-    [height, wallThickness]
-  );
-  const clipPlanes = showCutaway
-    ? [topClipPlane, sideClipPlane]
-    : [topClipPlane];
+  const clipPlanes = showCutaway ? [sideClipPlane] : [];
 
   return (
     <group position={[0, 0.1, 0]}>
@@ -201,33 +187,87 @@ function BoxScene({ boxTypeId, productId, preset, showCutaway }) {
         <meshStandardMaterial color="#131520" />
       </mesh>
 
-      <RoundedBox args={[width, height, depth]} radius={0.18} smoothness={6}>
-        <meshStandardMaterial
-          color={MATERIAL_COLORS[boxTypeId]}
-          roughness={0.75}
-          metalness={0.05}
-          clippingPlanes={clipPlanes}
-        />
-        <Edges color="#7c5c3b" />
-      </RoundedBox>
+      <group>
+        <mesh position={[0, -height / 2 + wallThickness / 2, 0]}>
+          <boxGeometry args={[width, wallThickness, depth]} />
+          <meshStandardMaterial
+            color={MATERIAL_COLORS[boxTypeId]}
+            roughness={0.75}
+            metalness={0.05}
+            clippingPlanes={clipPlanes}
+          />
+          <Edges color="#7c5c3b" />
+        </mesh>
 
-      <RoundedBox
-        args={[
-          width - wallThickness * 1.6,
-          height - wallThickness * 1.6,
-          depth - wallThickness * 1.6,
-        ]}
-        radius={0.14}
-        smoothness={6}
-      >
-        <meshStandardMaterial
-          color="#8f6d4b"
-          roughness={0.85}
-          metalness={0.02}
-          side={THREE.BackSide}
-          clippingPlanes={clipPlanes}
-        />
-      </RoundedBox>
+        <mesh position={[0, -height / 2 + wallHeight / 2, depth / 2 - wallThickness / 2]}>
+          <boxGeometry args={[width, wallHeight, wallThickness]} />
+          <meshStandardMaterial
+            color={MATERIAL_COLORS[boxTypeId]}
+            roughness={0.8}
+            metalness={0.04}
+            clippingPlanes={clipPlanes}
+          />
+          <Edges color="#7c5c3b" />
+        </mesh>
+        <mesh position={[0, -height / 2 + wallHeight / 2, -depth / 2 + wallThickness / 2]}>
+          <boxGeometry args={[width, wallHeight, wallThickness]} />
+          <meshStandardMaterial
+            color={MATERIAL_COLORS[boxTypeId]}
+            roughness={0.8}
+            metalness={0.04}
+            clippingPlanes={clipPlanes}
+          />
+          <Edges color="#7c5c3b" />
+        </mesh>
+        <mesh position={[width / 2 - wallThickness / 2, -height / 2 + wallHeight / 2, 0]}>
+          <boxGeometry args={[wallThickness, wallHeight, depth]} />
+          <meshStandardMaterial
+            color={MATERIAL_COLORS[boxTypeId]}
+            roughness={0.8}
+            metalness={0.04}
+            clippingPlanes={clipPlanes}
+          />
+          <Edges color="#7c5c3b" />
+        </mesh>
+        <mesh position={[-width / 2 + wallThickness / 2, -height / 2 + wallHeight / 2, 0]}>
+          <boxGeometry args={[wallThickness, wallHeight, depth]} />
+          <meshStandardMaterial
+            color={MATERIAL_COLORS[boxTypeId]}
+            roughness={0.8}
+            metalness={0.04}
+            clippingPlanes={clipPlanes}
+          />
+          <Edges color="#7c5c3b" />
+        </mesh>
+
+        <mesh position={[0, -height / 2 + wallHeight * 0.55, 0]}>
+          <boxGeometry
+            args={[
+              width - wallThickness * 1.6,
+              wallHeight * 0.85,
+              depth - wallThickness * 1.6,
+            ]}
+          />
+          <meshStandardMaterial
+            color="#8f6d4b"
+            roughness={0.9}
+            metalness={0.02}
+            side={THREE.BackSide}
+            clippingPlanes={clipPlanes}
+          />
+        </mesh>
+
+        <mesh position={[0, wallTop + wallThickness * 0.35, 0]}>
+          <boxGeometry args={[width * 1.02, wallThickness * 0.6, depth * 1.02]} />
+          <meshStandardMaterial
+            color={MATERIAL_COLORS[boxTypeId]}
+            roughness={0.7}
+            metalness={0.05}
+            clippingPlanes={clipPlanes}
+          />
+          <Edges color="#7c5c3b" />
+        </mesh>
+      </group>
 
       <mesh position={[0, -height / 2 + insertHeight / 2, 0]}>
         <boxGeometry args={[width * 0.92, insertHeight, depth * 0.92]} />
