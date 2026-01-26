@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   Environment,
+  Edges,
   Html,
   OrbitControls,
   RoundedBox,
@@ -62,9 +63,9 @@ const INSERT_HEIGHTS = {
 };
 
 const MATERIAL_COLORS = {
-  product: "#4b7bff",
-  gift: "#c89bff",
-  ship: "#39d0b2",
+  product: "#caa37c",
+  gift: "#d7b38c",
+  ship: "#b98b61",
 };
 
 function Chocolates({ innerWidth, innerDepth, baseHeight }) {
@@ -175,11 +176,23 @@ function BoxScene({ boxTypeId, productId, preset, showCutaway }) {
   const innerDepth = depth * 0.78;
   const insertHeight = INSERT_HEIGHTS[boxTypeId];
   const baseHeight = -height / 2 + insertHeight + 0.1;
+  const wallThickness = 0.14;
 
-  const clipPlane = useMemo(
+  const sideClipPlane = useMemo(
     () => new THREE.Plane(new THREE.Vector3(-1, 0, 0), width * 0.15),
     [width]
   );
+  const topClipPlane = useMemo(
+    () =>
+      new THREE.Plane(
+        new THREE.Vector3(0, 1, 0),
+        -(height / 2 - wallThickness)
+      ),
+    [height, wallThickness]
+  );
+  const clipPlanes = showCutaway
+    ? [topClipPlane, sideClipPlane]
+    : [topClipPlane];
 
   return (
     <group position={[0, 0.1, 0]}>
@@ -189,24 +202,30 @@ function BoxScene({ boxTypeId, productId, preset, showCutaway }) {
       </mesh>
 
       <RoundedBox args={[width, height, depth]} radius={0.18} smoothness={6}>
-        <meshPhysicalMaterial
+        <meshStandardMaterial
           color={MATERIAL_COLORS[boxTypeId]}
-          transparent
-          opacity={showCutaway ? 0.28 : 0.5}
-          roughness={0.35}
-          metalness={0.15}
-          clearcoat={0.4}
-          clippingPlanes={showCutaway ? [clipPlane] : []}
-          clipShadows
+          roughness={0.75}
+          metalness={0.05}
+          clippingPlanes={clipPlanes}
         />
+        <Edges color="#7c5c3b" />
       </RoundedBox>
 
-      <RoundedBox args={[width + 0.02, height + 0.02, depth + 0.02]} radius={0.2}>
+      <RoundedBox
+        args={[
+          width - wallThickness * 1.6,
+          height - wallThickness * 1.6,
+          depth - wallThickness * 1.6,
+        ]}
+        radius={0.14}
+        smoothness={6}
+      >
         <meshStandardMaterial
-          color="#99b9ff"
-          wireframe
-          transparent
-          opacity={0.35}
+          color="#8f6d4b"
+          roughness={0.85}
+          metalness={0.02}
+          side={THREE.BackSide}
+          clippingPlanes={clipPlanes}
         />
       </RoundedBox>
 
