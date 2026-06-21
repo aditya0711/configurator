@@ -1,0 +1,134 @@
+{
+  "stories": [
+    {
+      "id": "rbi-credit-risk",
+      "headline": "RBI commentary keeps bank credit quality in focus",
+      "source": "Reserve Bank of India",
+      "publishedAt": "2026-06-21T03:15:00Z",
+      "category": "Regulation",
+      "region": "India",
+      "summary": "Supervisory signals point to sharper lender scrutiny of unsecured and wholesale credit.",
+      "score": 92,
+      "product": "Private Credit",
+      "audience": "Banks, NBFCs, wealth managers",
+      "url": "https://www.rbi.org.in/",
+      "clusterKey": "rbi-credit",
+      "facts": [
+        "Regulatory commentary is treated as a primary source signal.",
+        "Credit underwriting and portfolio monitoring are the relevant themes."
+      ],
+      "related": [
+        "nbfc-funding",
+        "bond-demand"
+      ]
+    },
+    {
+      "id": "sebi-ai-disclosure",
+      "headline": "SEBI disclosure focus raises bar for investment communication",
+      "source": "Securities and Exchange Board of India",
+      "publishedAt": "2026-06-20T11:00:00Z",
+      "category": "Regulation",
+      "region": "India",
+      "summary": "Market intermediaries face continued pressure to keep investor communication clear and evidenced.",
+      "score": 89,
+      "product": "AltWealth Research",
+      "audience": "Financial advisers, institutions",
+      "url": "https://www.sebi.gov.in/",
+      "clusterKey": "sebi-disclosure",
+      "facts": [
+        "Regulatory updates should be checked against SEBI circulars before publication.",
+        "Marketing interpretation must avoid unsupported claims."
+      ],
+      "related": [
+        "wealth-content"
+      ]
+    },
+    {
+      "id": "global-rates",
+      "headline": "Global rate expectations reshape demand for private market income",
+      "source": "Financial Times",
+      "publishedAt": "2026-06-19T09:30:00Z",
+      "category": "Markets",
+      "region": "Global",
+      "summary": "Investors are reassessing income strategies as rate-cut timing remains uncertain across major economies.",
+      "score": 86,
+      "product": "Private Credit",
+      "audience": "Family offices, HNIs, institutions",
+      "url": "https://www.ft.com/markets",
+      "clusterKey": "global-rates",
+      "facts": [
+        "Rate uncertainty affects fixed-income allocation discussions.",
+        "Private market income products need risk-first framing."
+      ],
+      "related": [
+        "bond-demand"
+      ]
+    },
+    {
+      "id": "preipo-liquidity",
+      "headline": "Pre-IPO liquidity discussions return as late-stage companies stay private longer",
+      "source": "Moneycontrol",
+      "publishedAt": "2026-06-18T06:45:00Z",
+      "category": "Alternative Investments",
+      "region": "India",
+      "summary": "Longer private-company timelines are increasing interest in secondary and unlisted-share access.",
+      "score": 84,
+      "product": "Unlisted Shares",
+      "audience": "HNIs, family offices, investment professionals",
+      "url": "https://www.moneycontrol.com/news/business/ipo/",
+      "clusterKey": "preipo-liquidity",
+      "facts": [
+        "Companies staying private longer can create secondary-market demand.",
+        "Suitability and liquidity risk should be highlighted."
+      ],
+      "related": [
+        "family-office"
+      ]
+    },
+    {
+      "id": "bond-demand",
+      "headline": "Listed bond platforms see growing investor attention to predictable income",
+      "source": "Economic Times",
+      "publishedAt": "2026-06-17T08:10:00Z",
+      "category": "Investments",
+      "region": "India",
+      "summary": "Curated bond access remains relevant for investors seeking transparent cash-flow profiles.",
+      "score": 81,
+      "product": "Listed Bonds",
+      "audience": "HNIs, advisers, business owners",
+      "url": "https://economictimes.indiatimes.com/markets/bonds",
+      "clusterKey": "bond-demand",
+      "facts": [
+        "Bond content must distinguish yield, credit risk, duration and liquidity.",
+        "Listed access can support transparency-led education."
+      ],
+      "related": [
+        "rbi-credit-risk"
+      ]
+    },
+    {
+      "id": "family-office",
+      "headline": "Family offices expand private market research capabilities",
+      "source": "The Ken",
+      "publishedAt": "2026-06-16T05:00:00Z",
+      "category": "Wealth Management",
+      "region": "India",
+      "summary": "Sophisticated allocators are demanding deeper diligence before making alternative investments.",
+      "score": 80,
+      "product": "AltWealth Research",
+      "audience": "Family offices, institutions",
+      "url": "https://the-ken.com/",
+      "clusterKey": "family-office-research",
+      "facts": [
+        "Family offices increasingly value specialist diligence.",
+        "Education-led content can support trust."
+      ],
+      "related": [
+        "preipo-liquidity"
+      ]
+    }
+  ],
+  "ideas": [],
+  "saved": [],
+  "briefs": []
+}
